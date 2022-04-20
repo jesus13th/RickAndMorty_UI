@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RickAndMorty.MainPage">
+
+    <NavigationPage.TitleView>
+        <StackLayout HorizontalOptions="Center">
+            <Label Text="Characters" FontSize="Title" FontAttributes="Bold" TextColor="White"></Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <StackLayout>
+        <ListView x:Name="characterList" VerticalOptions="CenterAndExpand" RowHeight="200" Margin="5" SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid RowDefinitions="*, auto, auto, auto, auto, auto" ColumnDefinitions="200, auto, *, *"  Padding="15" BackgroundColor="Gray">
+                            <Image Source="{Binding image}" HeightRequest="200" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.Row="0" Grid.RowSpan="6"/>
+
+                            <Label Text="{Binding name}" FontSize="20" FontAttributes="Bold" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3"/>
+
+                            <Image Source="{Binding statusImg}" Aspect="AspectFit" WidthRequest="10" VerticalOptions="Center" Grid.Column="1" Grid.Row="1"/>
+                            <Label Text="{Binding status}" FontSize="12" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="2" Grid.Row="1"/>
+                            <Label Text="{Binding species}" FontSize="12" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="3" Grid.Row="1"/>
+
+                            <Label Text="origin:" FontAttributes="Bold" FontSize="12" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3"/>
+                            <Label Text="{Binding origin.name}" FontSize="12" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3"/>
+
+                            <Label Text="Last known location:" FontSize="12" FontAttributes="Bold" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"/>
+                            <Label Text="{Binding location.name}" FontSize="12" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <StackLayout Margin="5,0,5,5">
+                    <Grid ColumnDefinitions="*, * , *">
+                        <Button Text="previous" x:Name="previousBtn" Clicked="previousBtn_Clicked" Grid.Column="0"/>
+                        <Label x:Name="counterLbl" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        <Button Text="Next" x:Name="nextBtn" Clicked="nextBtn_Clicked" Grid.Column="2"/>
+                    </Grid>
+                </StackLayout>
+            </ListView.Footer>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
